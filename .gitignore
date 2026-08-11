@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Env / secrets
+.env
+.env.local
+*.pem
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+
+# ML artifacts (trained models are data, not code — don't commit large binaries)
+backend/app/services/ml/artifacts/*.joblib
+
+# Uploaded statements — never commit real financial documents
+backend/uploads/
+*.pdf
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
