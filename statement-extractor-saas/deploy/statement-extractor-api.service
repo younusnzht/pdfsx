@@ -1,0 +1,21 @@
+[Unit]
+Description=Statement Extractor FastAPI app
+After=network.target postgresql.service redis-server.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/statement-extractor/backend
+EnvironmentFile=/var/www/statement-extractor/backend/.env
+ExecStart=/var/www/statement-extractor/backend/venv/bin/gunicorn app.main:app \
+  -k uvicorn.workers.UvicornWorker \
+  --workers 4 \
+  --bind 127.0.0.1:8010 \
+  --access-logfile /var/log/statement-extractor/access.log \
+  --error-logfile /var/log/statement-extractor/error.log
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
