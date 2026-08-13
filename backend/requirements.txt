@@ -22,9 +22,12 @@ celery==5.4.0
 redis==5.2.0
 
 # PDF text extraction (deterministic, non-OCR path)
+# NOTE: camelot-py dropped — its "base" extra depends on pdftopng, which has
+# no Windows wheel. pdfplumber below covers table extraction reasonably for
+# now; revisit camelot (or an alternative) on the Linux VPS later.
 pymupdf==1.24.13
 pdfplumber==0.11.4
-camelot-py[base]==0.11.0
+# camelot-py[base]==0.11.0
 
 # OCR path (scanned PDFs / images)
 pytesseract==0.3.13
